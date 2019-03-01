@@ -18,11 +18,16 @@ class Counters extends Component {
             }
         ]
     };
+    handeleDelete = (counterId)=>{
+       const countersConst = this.state.counters.filter(c => c.id !== counterId);
+       this.setState({ counters : countersConst})
+    }
     render() { 
         return ( 
             <>
                {this.state.counters.map( counter =>
-                 <Counter key={counter.id} value={counter.value} /> )}
+                 <Counter key={counter.id} counter={counter} onDelete={this.handeleDelete} /> )}
+                 
             </>
         );
     }
